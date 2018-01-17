@@ -56,13 +56,6 @@ Crea el grupo si no existe
 api.add_group_address("Grupo_1", "Direccion_1")
 ```
 
-ej:
-    proxies = {
-        'http': 'socks5://127.0.0.1:1081',
-        'https': 'socks5://127.0.0.1:1081'
-    }
-    api.set_proxy(proxies)
-
 ### TODO:
  - [ ] Añadir resto de opciones de la API
  - [ ] Documentar metodos
