@@ -58,7 +58,6 @@ class Paloalto_api(object):
     def delete_address(self,nombre):
         """Elimina la dirección relacionada con el nombre pasado"""
         data = {
-            'key': self.api_key,
             'type': 'config',
             'action': 'delete',
             'xpath': self.XPATH + "/address/entry[@name='%s']" % nombre
