@@ -47,7 +47,7 @@ api.create_address("Direccion_2", "192.168.1.1/32", "Descripcion")
 
 ##### Eliminar objeto de tipo dirección:  
 ```python
-api.delete_objet("Direccion_1")
+api.delete_address("Direccion_1")
 ```
 
 ##### Añadir dirección a grupo    

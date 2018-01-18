@@ -50,7 +50,7 @@ class Paloalto_api(object):
         }
         return self._navegador(data)
     
-    def delete_objet(self,nombre):
+    def delete_address(self,nombre):
         """Elimina la dirección relacionada con el nombre pasado"""
         data = {
             'key': self.api_key,
