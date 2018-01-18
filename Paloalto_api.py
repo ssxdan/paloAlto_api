@@ -2,7 +2,9 @@ import requests
 
 class Paloalto_api(object):
     """docstring for paloalto_api."""
-    XPATH = "/config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']"
+    XPATH = "/config/devices/entry[@name='localhost.localdomain']" + \
+            "/vsys/entry[@name='vsys1']"
+    
     def __init__(self, url, api_key, proxies={}):
         self.url = url
         self.api_key = api_key
@@ -43,7 +45,8 @@ class Paloalto_api(object):
             'type': 'config',
             'action': 'set',
             'xpath': self.XPATH + "/address/entry[@name='%s']" % nombre,
-            'element': "<ip-netmask>%s</ip-netmask><description>%s</description>" % (ip, descripcion)
+            'element': "<ip-netmask>%s</ip-netmask>" % ip + \
+                "<description>%s</description>" % descripcion
         }
         return self._navegador(data)
     
@@ -63,7 +66,8 @@ class Paloalto_api(object):
             'key': self.api_key,
             'type': 'config',
             'action': 'set',
-            'xpath': self.XPATH + "/address-group/entry[@name='%s']/static" % group,
+            'xpath': self.XPATH + "/address-group/" + \
+                "entry[@name='%s']/static" % group,
             'element': '<member>%s</member>' % address
         }
         return self._navegador(data)
