@@ -84,6 +84,17 @@ class Paloalto_api(object):
         }
         return self._navegador(data)
     
+    def delete_group(self, group):
+        """Eliminar grupo de direcciones"""
+        data = {
+            'key': self.api_key,
+            'type': 'config',
+            'action': 'delete',
+            'xpath': self.XPATH + "/address-group" + \
+                "/entry[@name='%s']" % group
+        }
+        return self._navegador(data)
+    
     def _navegador(self, data):
         return requests.get(
             self.url,
