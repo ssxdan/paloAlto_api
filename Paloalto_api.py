@@ -19,6 +19,14 @@ class Paloalto_api(object):
         """Verificar certificado HTTPS"""
         self.https_verify = https_verify
     
+    def commit(self):
+        """Commit"""
+        data = {
+            'type': 'commit',
+            'cmd': '<commit/>'
+        }
+        return self._navegador(data)
+    
     def get_config(self):
         """Retorna un XML con la configuration actual"""
         data = {
