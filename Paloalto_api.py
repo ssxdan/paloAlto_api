@@ -64,6 +64,20 @@ class Paloalto_api(object):
         }
         return self._navegador(data)
     
+    def create_rule(self,  *args, **kwargs):
+        """Crear regla en FW"""
+        # TODO: jinja2
+        return False
+    
+    def delete_rule(self, rule):
+        """Eliminar regla de seguridad"""
+        data = {
+            'type': 'config',
+            'action': 'delete',
+            'xpath': self.XPATH + "/address/entry[@name='%s']" % nombre
+        }
+        return self._navegador(data)
+    
     def add_group_address(self, group, address):
         """Añade una dirección a un grupo y crea el grupo si no existe"""
         data = {
