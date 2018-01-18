@@ -24,14 +24,12 @@ class Paloalto_api(object):
         data = {
             'type': 'export',
             'category': 'configuration',
-            'key': self.api_key
         }
         return self._navegador(data)
     
     def get_address(self, address):
         """Retorna un xml del relacionado con el nombre pasado"""
         data = {
-            'key': self.api_key,
             'type': 'config',
             'action': 'get',
             'xpath': self.XPATH + "/address/entry[@name='%s']" % address
@@ -41,7 +39,6 @@ class Paloalto_api(object):
     def create_address(self, nombre, ip, descripcion):
         """ Crea un objeo de tipo dirección en PaloAlto"""
         data = {
-            'key': self.api_key,
             'type': 'config',
             'action': 'set',
             'xpath': self.XPATH + "/address/entry[@name='%s']" % nombre,
@@ -63,7 +60,6 @@ class Paloalto_api(object):
     def add_group_address(self, group, address):
         """Añade una dirección a un grupo y crea el grupo si no existe"""
         data = {
-            'key': self.api_key,
             'type': 'config',
             'action': 'set',
             'xpath': self.XPATH + "/address-group/" + \
@@ -75,7 +71,6 @@ class Paloalto_api(object):
     def delete_group_address(self, group, address):
         """ Eliminar dirección de un grupo"""
         data = {
-            'key': self.api_key,
             'type': 'config',
             'action': 'delete',
             'xpath': self.XPATH + "/address-group" + \
@@ -87,7 +82,6 @@ class Paloalto_api(object):
     def delete_group(self, group):
         """Eliminar grupo de direcciones"""
         data = {
-            'key': self.api_key,
             'type': 'config',
             'action': 'delete',
             'xpath': self.XPATH + "/address-group" + \
@@ -96,6 +90,7 @@ class Paloalto_api(object):
         return self._navegador(data)
     
     def _navegador(self, data):
+        data.update({'key': self.api_key})
         return requests.get(
             self.url,
             data,
