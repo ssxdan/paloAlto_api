@@ -94,8 +94,8 @@ class Paloalto_api(object):
         return requests.get(
             self.url,
             data,
-            proxies = self.proxies,
-            verify = self.https_verify
+            proxies=self.proxies,
+            verify=self.https_verify
         ).content
 
 
